@@ -22,6 +22,11 @@ final class NoEmptyLineBeforeDeclareStrictTypesFixer extends AbstractFixer imple
 		);
 	}
 
+	public function getName(): string
+	{
+		return 'Developion/no_empty_line_before_declare_strict_types';
+	}
+
 	protected function applyFix(\SplFileInfo $file, Tokens $tokens): void
 	{
 		$openTagIndex = 0;

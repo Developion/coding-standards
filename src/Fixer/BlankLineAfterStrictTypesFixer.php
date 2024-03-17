@@ -21,6 +21,11 @@ final class BlankLineAfterStrictTypesFixer extends AbstractFixer implements Whit
 		);
 	}
 
+	public function getName(): string
+	{
+		return 'Developion/blank_line_after_strict_types';
+	}
+
 	protected function applyFix(SplFileInfo $file, Tokens $tokens): void
 	{
 		$sequenceLocation = $tokens->findSequence($this->declareStrictTypeTokens);
