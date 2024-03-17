@@ -14,10 +14,6 @@ use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 return ECSConfig::configure()
 	->withParallel()
-	->withPaths([
-		__DIR__ . '/plugins/module',
-		__FILE__,
-	])
 	->withSets([
 		SetList::PSR_12,
 	])
