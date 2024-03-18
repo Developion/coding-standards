@@ -8,6 +8,10 @@
 		"files": [
 			"files/helpers.php"
 		]
+		},
+		"files": [
+			"files/helpers.php"
+		]
 	},
 	"authors": [
 		{
@@ -17,8 +21,16 @@
 	],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
-	"require": {
+	"require-dev": {
 		"friendsofphp/php-cs-fixer": "^3.51",
+		"phpstan/phpstan-strict-rules": "^1.5",
+		"symplify/easy-coding-standard": "^12.1",
+		"pestphp/pest": "^2.34"
+	},
+	"config": {
+		"allow-plugins": {
+			"pestphp/pest-plugin": true
+		}
 		"phpstan/phpstan-strict-rules": "^1.5",
 		"symplify/easy-coding-standard": "^12.1",
 		"pestphp/pest": "^2.34"
@@ -29,3 +41,4 @@
 		}
 	}
 }
+
