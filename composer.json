@@ -17,7 +17,7 @@
 	],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
-	"require-dev": {
+	"require": {
 		"friendsofphp/php-cs-fixer": "^3.51",
 		"phpstan/phpstan-strict-rules": "^1.5",
 		"symplify/easy-coding-standard": "^12.1",
