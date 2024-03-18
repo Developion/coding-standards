@@ -5,5 +5,9 @@ namespace Developion\CodingStandards;
 
 final class SetList
 {
-	public const DEVELOPION = __DIR__ . '/../sets/developion.php';
+	/** @deprecated use ECS */
+	public const DEVELOPION = __DIR__ . '/../sets/ecs.php';
+	public const ECS = __DIR__ . '/../sets/ecs.php';
+
+	public const PHP_CS_FIXER = __DIR__ . '/../sets/php-cs-fixer.php';
 }

@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace Developion\CodingStandards\Fixer;
 
+use Developion\CodingStandards\Traits\FixerName;
 use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\Fixer\WhitespacesAwareFixerInterface;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
-use PhpCsFixer\Tokenizer\CT;
-use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
 final class NoEmptyLineBeforeDeclareStrictTypesFixer extends AbstractFixer implements WhitespacesAwareFixerInterface
 {
 	use StrictTypesFixer;
+	use FixerName;
 
 	public function getDefinition(): FixerDefinition
 	{
@@ -20,11 +20,6 @@ final class NoEmptyLineBeforeDeclareStrictTypesFixer extends AbstractFixer imple
 			'Ensure there is no empty line between the opening PHP tag and the strict_types declaration.',
 			[]
 		);
-	}
-
-	public function getName(): string
-	{
-		return 'Developion/no_empty_line_before_declare_strict_types';
 	}
 
 	protected function applyFix(\SplFileInfo $file, Tokens $tokens): void
