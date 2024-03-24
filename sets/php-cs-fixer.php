@@ -1,50 +1,82 @@
 <?php
 declare(strict_types=1);
 
-use Developion\CodingStandards\Fixer\BlankLineAfterStrictTypesFixer;
-use Developion\CodingStandards\Fixer\NoEmptyLineBeforeDeclareStrictTypesFixer;
-use Developion\CodingStandards\Fixer\RemoveDebugLinesFixer;
+use Developion\CodingStandards\Fixer\{
+	BlankLineAfterStrictTypesFixer,
+	NoEmptyLineBeforeDeclareStrictTypesFixer,
+	RemoveDebugLinesFixer,
+};
 use Developion\CodingStandards\Util;
-use PhpCsFixer\Config;
-use PhpCsFixer\ConfigInterface;
-use PhpCsFixer\Finder;
 use PhpCsFixer\Fixer\Alias\ModernizeStrposFixer;
 use PhpCsFixer\Fixer\Basic\NumericLiteralSeparatorFixer;
-use PhpCsFixer\Fixer\Import\NoUnusedImportsFixer;
-use PhpCsFixer\Fixer\Import\OrderedImportsFixer;
+use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
+use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
+use PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer;
+use PhpCsFixer\Fixer\Import\{
+	GroupImportFixer,
+	NoUnusedImportsFixer,
+	OrderedImportsFixer,
+	SingleImportPerStatementFixer,
+	SingleLineAfterImportsFixer,
+};
+use PhpCsFixer\Fixer\NamespaceNotation\BlankLineAfterNamespaceFixer;
 use PhpCsFixer\Fixer\Operator\TernaryOperatorSpacesFixer;
-use PhpCsFixer\Fixer\PhpTag\LinebreakAfterOpeningTagFixer;
+use PhpCsFixer\Fixer\PhpTag\{
+	BlankLineAfterOpeningTagFixer,
+	LinebreakAfterOpeningTagFixer,
+};
 use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
-use PhpCsFixer\Fixer\Whitespace\IndentationTypeFixer;
-use PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer;
+use PhpCsFixer\Fixer\Whitespace\{
+	BlankLineBetweenImportGroupsFixer,
+	IndentationTypeFixer,
+	MethodChainingIndentationFixer,
+	NoExtraBlankLinesFixer,
+	StatementIndentationFixer,
+};
+use PhpCsFixer\{Config, ConfigInterface, Finder};
 
 return function (Finder $finder): ConfigInterface {
 	return (new Config())
-	->setRiskyAllowed(true)
-	->registerCustomFixers([
-		new BlankLineAfterStrictTypesFixer(),
-		new NoEmptyLineBeforeDeclareStrictTypesFixer(),
-		new RemoveDebugLinesFixer(),
-	])
-	->setRules([
-		'@PSR12:risky' => true,
-		Util::getName(ModernizeStrposFixer::class) => true,
-		Util::getName(OrderedImportsFixer::class) => true,
-		Util::getName(NoUnusedImportsFixer::class) => true,
-		Util::getName(NoExtraBlankLinesFixer::class) => [
-			'tokens' => [
-				'extra',
-				'use',
+		->setRiskyAllowed(true)
+		->registerCustomFixers([
+			new BlankLineAfterStrictTypesFixer(),
+			new NoEmptyLineBeforeDeclareStrictTypesFixer(),
+			new RemoveDebugLinesFixer(),
+		])
+		->setRules([
+			// base set
+			'@PSR12:risky' => true,
+			// disables
+			Util::getName(BlankLineAfterOpeningTagFixer::class) => false,
+			Util::getName(SingleImportPerStatementFixer::class) => false,
+			// enables
+			Util::getName(BlankLineAfterNamespaceFixer::class) => true,
+			Util::getName(BlankLineBetweenImportGroupsFixer::class) => true,
+			Util::getName(DeclareStrictTypesFixer::class) => true,
+			Util::getName(GroupImportFixer::class) => true,
+			Util::getName(IndentationTypeFixer::class) => true,
+			Util::getName(LinebreakAfterOpeningTagFixer::class) => true,
+			Util::getName(MethodChainingIndentationFixer::class) => true,
+			Util::getName(ModernizeStrposFixer::class) => true,
+			Util::getName(NoExtraBlankLinesFixer::class) => [
+				'tokens' => [
+					'extra',
+					'use',
+				],
 			],
-		],
-		Util::getName(NumericLiteralSeparatorFixer::class) => true,
-		Util::getName(IndentationTypeFixer::class) => true,
-		Util::getName(TernaryOperatorSpacesFixer::class) => true,
-		Util::getName(LinebreakAfterOpeningTagFixer::class) => true,
-		Util::getName(DeclareStrictTypesFixer::class) => true,
-		BlankLineAfterStrictTypesFixer::name() => true,
-		NoEmptyLineBeforeDeclareStrictTypesFixer::name() => true,
-	])
-	->setIndent("\t")
-	->setFinder($finder);
+			Util::getName(NoUnusedImportsFixer::class) => true,
+			Util::getName(NumericLiteralSeparatorFixer::class) => true,
+			Util::getName(OrderedImportsFixer::class) => true,
+			Util::getName(ReturnTypeDeclarationFixer::class) => true,
+			Util::getName(SingleLineAfterImportsFixer::class) => true,
+			Util::getName(StatementIndentationFixer::class) => true,
+			Util::getName(TernaryOperatorSpacesFixer::class) => true,
+			Util::getName(TrailingCommaInMultilineFixer::class) => true,
+			Util::getName(VisibilityRequiredFixer::class) => true,
+			// custom fixers
+			BlankLineAfterStrictTypesFixer::name() => true,
+			NoEmptyLineBeforeDeclareStrictTypesFixer::name() => true,
+		])
+		->setIndent("\t")
+		->setFinder($finder);
 };

@@ -5,13 +5,28 @@ use Developion\CodingStandards\Fixer\{
 	BlankLineAfterStrictTypesFixer,
 	NoEmptyLineBeforeDeclareStrictTypesFixer,
 };
-use PhpCsFixer\Fixer\{
-	Import\NoUnusedImportsFixer,
-	Import\SingleImportPerStatementFixer,
-	PhpTag\BlankLineAfterOpeningTagFixer,
-	PhpTag\LinebreakAfterOpeningTagFixer,
-	Strict\DeclareStrictTypesFixer,
-	Whitespace\MethodChainingIndentationFixer,
+use PhpCsFixer\Fixer\Basic\NumericLiteralSeparatorFixer;
+use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
+use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
+use PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer;
+use PhpCsFixer\Fixer\Import\{
+	GroupImportFixer,
+	NoUnusedImportsFixer,
+	SingleImportPerStatementFixer,
+	SingleLineAfterImportsFixer,
+};
+use PhpCsFixer\Fixer\NamespaceNotation\BlankLineAfterNamespaceFixer;
+use PhpCsFixer\Fixer\Operator\TernaryOperatorSpacesFixer;
+use PhpCsFixer\Fixer\PhpTag\{
+	BlankLineAfterOpeningTagFixer,
+	LinebreakAfterOpeningTagFixer,
+};
+use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
+use PhpCsFixer\Fixer\Whitespace\{
+	BlankLineBetweenImportGroupsFixer,
+	IndentationTypeFixer,
+	MethodChainingIndentationFixer,
+	StatementIndentationFixer,
 };
 use Symplify\EasyCodingStandard\{
 	Config\ECSConfig,
@@ -38,5 +53,18 @@ return ECSConfig::configure()
 		BlankLineAfterStrictTypesFixer::class,
 		MethodChainingIndentationFixer::class,
 		NoUnusedImportsFixer::class,
+		NumericLiteralSeparatorFixer::class,
+		TrailingCommaInMultilineFixer::class,
+		IndentationTypeFixer::class,
+		StatementIndentationFixer::class,
+		TernaryOperatorSpacesFixer::class,
+		LinebreakAfterOpeningTagFixer::class,
+		BlankLineAfterNamespaceFixer::class,
+		VisibilityRequiredFixer::class,
+		ReturnTypeDeclarationFixer::class,
+		DeclareStrictTypesFixer::class,
+		GroupImportFixer::class,
+		SingleLineAfterImportsFixer::class,
+		BlankLineBetweenImportGroupsFixer::class,
 	])
 ;
