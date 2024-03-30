@@ -5,8 +5,10 @@ namespace Developion\CodingStandards\Fixer;
 
 use Developion\CodingStandards\Traits\FixerName;
 use PhpCsFixer\AbstractFunctionReferenceFixer;
-use PhpCsFixer\FixerDefinition\CodeSample;
-use PhpCsFixer\FixerDefinition\FixerDefinition;
+use PhpCsFixer\FixerDefinition\{
+	CodeSample,
+	FixerDefinition,
+};
 use PhpCsFixer\Tokenizer\Tokens;
 
 final class RemoveDebugLinesFixer extends AbstractFunctionReferenceFixer

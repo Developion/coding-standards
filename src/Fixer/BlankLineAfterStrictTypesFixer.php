@@ -6,8 +6,8 @@ namespace Developion\CodingStandards\Fixer;
 use Developion\CodingStandards\Traits\FixerName;
 use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\Fixer\WhitespacesAwareFixerInterface;
-use PhpCsFixer\Tokenizer\Tokens;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
+use PhpCsFixer\Tokenizer\Tokens;
 use SplFileInfo;
 
 final class BlankLineAfterStrictTypesFixer extends AbstractFixer implements WhitespacesAwareFixerInterface

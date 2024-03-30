@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use Developion\CodingStandards\Fixer\Import\SingleImportPerLineInGroupImportFixer;
 use Developion\CodingStandards\Fixer\{
 	BlankLineAfterStrictTypesFixer,
 	NoEmptyLineBeforeDeclareStrictTypesFixer,
@@ -13,7 +14,6 @@ use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
 use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
 use PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer;
 use PhpCsFixer\Fixer\Import\{
-	GroupImportFixer,
 	NoUnusedImportsFixer,
 	OrderedImportsFixer,
 	SingleImportPerStatementFixer,
@@ -33,7 +33,11 @@ use PhpCsFixer\Fixer\Whitespace\{
 	NoExtraBlankLinesFixer,
 	StatementIndentationFixer,
 };
-use PhpCsFixer\{Config, ConfigInterface, Finder};
+use PhpCsFixer\{
+	Config,
+	ConfigInterface,
+	Finder,
+};
 
 return function (Finder $finder): ConfigInterface {
 	return (new Config())
@@ -42,6 +46,7 @@ return function (Finder $finder): ConfigInterface {
 			new BlankLineAfterStrictTypesFixer(),
 			new NoEmptyLineBeforeDeclareStrictTypesFixer(),
 			new RemoveDebugLinesFixer(),
+			new SingleImportPerLineInGroupImportFixer(),
 		])
 		->setRules([
 			// base set
@@ -53,7 +58,6 @@ return function (Finder $finder): ConfigInterface {
 			Util::getName(BlankLineAfterNamespaceFixer::class) => true,
 			Util::getName(BlankLineBetweenImportGroupsFixer::class) => true,
 			Util::getName(DeclareStrictTypesFixer::class) => true,
-			Util::getName(GroupImportFixer::class) => true,
 			Util::getName(IndentationTypeFixer::class) => true,
 			Util::getName(LinebreakAfterOpeningTagFixer::class) => true,
 			Util::getName(MethodChainingIndentationFixer::class) => true,
@@ -76,6 +80,7 @@ return function (Finder $finder): ConfigInterface {
 			// custom fixers
 			BlankLineAfterStrictTypesFixer::name() => true,
 			NoEmptyLineBeforeDeclareStrictTypesFixer::name() => true,
+			SingleImportPerLineInGroupImportFixer::name() => true,
 		])
 		->setIndent("\t")
 		->setFinder($finder);

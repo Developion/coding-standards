@@ -12,6 +12,7 @@ use PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer;
 use PhpCsFixer\Fixer\Import\{
 	GroupImportFixer,
 	NoUnusedImportsFixer,
+	OrderedImportsFixer,
 	SingleImportPerStatementFixer,
 	SingleLineAfterImportsFixer,
 };
@@ -67,4 +68,5 @@ return ECSConfig::configure()
 		SingleLineAfterImportsFixer::class,
 		BlankLineBetweenImportGroupsFixer::class,
 	])
+	->withConfiguredRule(OrderedImportsFixer::class, ['sort_algorithm' => 'alpha', 'imports_order' => ['const', 'class', 'function']])
 ;

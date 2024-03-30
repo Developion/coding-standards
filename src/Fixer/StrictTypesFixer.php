@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace Developion\CodingStandards\Fixer;
 
-use PhpCsFixer\Tokenizer\Tokens;
-use PhpCsFixer\Tokenizer\Token;
+use PhpCsFixer\Tokenizer\{
+	Token,
+	Tokens,
+};
 
 Trait StrictTypesFixer
 {
