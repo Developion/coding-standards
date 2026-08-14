@@ -1,13 +1,20 @@
 <?php
 declare(strict_types=1);
 
-use Developion\CodingStandards\Fixer\Import\SingleImportPerLineInGroupImportFixer;
 use Developion\CodingStandards\Fixer\{
 	BlankLineAfterStrictTypesFixer,
+	MultilineGroupImportFixer,
 	NoEmptyLineBeforeDeclareStrictTypesFixer,
 	RemoveDebugLinesFixer,
+	UngroupSingleImportFixer,
 };
+use Developion\CodingStandards\Fixer\Import\SingleImportPerLineInGroupImportFixer;
 use Developion\CodingStandards\Util;
+use PhpCsFixer\{
+	Config,
+	ConfigInterface,
+	Finder,
+};
 use PhpCsFixer\Fixer\Alias\ModernizeStrposFixer;
 use PhpCsFixer\Fixer\Basic\NumericLiteralSeparatorFixer;
 use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
@@ -33,11 +40,6 @@ use PhpCsFixer\Fixer\Whitespace\{
 	NoExtraBlankLinesFixer,
 	StatementIndentationFixer,
 };
-use PhpCsFixer\{
-	Config,
-	ConfigInterface,
-	Finder,
-};
 
 return function (Finder $finder): ConfigInterface {
 	return (new Config())
@@ -47,6 +49,8 @@ return function (Finder $finder): ConfigInterface {
 			new NoEmptyLineBeforeDeclareStrictTypesFixer(),
 			new RemoveDebugLinesFixer(),
 			new SingleImportPerLineInGroupImportFixer(),
+			new MultilineGroupImportFixer(),
+			new UngroupSingleImportFixer(),
 		])
 		->setRules([
 			// base set
@@ -81,6 +85,8 @@ return function (Finder $finder): ConfigInterface {
 			BlankLineAfterStrictTypesFixer::name() => true,
 			NoEmptyLineBeforeDeclareStrictTypesFixer::name() => true,
 			SingleImportPerLineInGroupImportFixer::name() => true,
+			MultilineGroupImportFixer::name() => true,
+			UngroupSingleImportFixer::name() => true,
 		])
 		->setIndent("\t")
 		->setFinder($finder);

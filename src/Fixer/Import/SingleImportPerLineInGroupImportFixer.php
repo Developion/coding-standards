@@ -10,13 +10,13 @@ use PhpCsFixer\FixerDefinition\{
 	FixerDefinition,
 	FixerDefinitionInterface,
 };
-use PhpCsFixer\Tokenizer\Analyzer\Analysis\NamespaceUseAnalysis;
-use PhpCsFixer\Tokenizer\Analyzer\NamespaceUsesAnalyzer;
 use PhpCsFixer\Tokenizer\{
 	CT,
 	Token,
 	Tokens,
 };
+use PhpCsFixer\Tokenizer\Analyzer\Analysis\NamespaceUseAnalysis;
+use PhpCsFixer\Tokenizer\Analyzer\NamespaceUsesAnalyzer;
 
 final class SingleImportPerLineInGroupImportFixer extends AbstractFixer
 {
